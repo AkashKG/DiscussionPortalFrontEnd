@@ -5,8 +5,8 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class AppService {
     constructor(private _http:Http) {}
-    getEmployees() {
-        return this._http.get("/Project/answers/Hi")
+    getEmployees(questionId) {
+        return this._http.get("/Project/answers/" + questionId)
                 .map((response:Response) => response.json());
     }
 }
