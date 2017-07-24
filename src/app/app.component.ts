@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AppService } from './app.service'
-
+import { AppService } from './app.service';
+import { AppHeaderComponent } from './header/app-header.component';
+import { HeaderInternalComponents } from './header/app-header.component';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -14,7 +15,7 @@ export class AppComponent implements OnInit {
     ngOnInit() {
         this._appService.getEmployees()
             .subscribe(resAppData => this.app = resAppData);
-
-        
     }
 }
+
+export const AppInternalComponents = [AppHeaderComponent, HeaderInternalComponents]

@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 export class AppService {
     constructor(private _http:Http) {}
     getEmployees() {
-        return this._http.get("/Project/answers/HiHello")
+        return this._http.get("/Project/answers/Hi")
                 .map((response:Response) => response.json());
     }
 }
