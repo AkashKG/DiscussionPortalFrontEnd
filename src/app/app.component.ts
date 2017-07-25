@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AppService } from './app.service';
 import { AppHeaderComponent } from './header/app-header.component';
 import { HeaderInternalComponents } from './header/app-header.component';
+import { BodyInternalComponents } from './body/body.internal';
 
 @Component({
   selector: 'app-root',
@@ -12,4 +13,4 @@ export class AppComponent {
 
 }
 
-export const AppInternalComponents = [AppHeaderComponent, HeaderInternalComponents]
+export const AppInternalComponents = [AppHeaderComponent, HeaderInternalComponents, BodyInternalComponents]

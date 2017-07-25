@@ -6,13 +6,14 @@ import { MaterialModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRouterModule, RoutingInternalComponents } from './routing/app-router.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
     AppComponent, AppInternalComponents, RoutingInternalComponents
   ],
   imports: [
-    BrowserModule, HttpModule, MaterialModule, AppRouterModule, BrowserAnimationsModule
+    BrowserModule, HttpModule, MaterialModule, AppRouterModule, BrowserAnimationsModule, FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
