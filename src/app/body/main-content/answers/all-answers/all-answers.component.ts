@@ -11,11 +11,15 @@ export class AllAnswersComponent implements OnInit {
 
     constructor(private _appService:AppService, private _route:ActivatedRoute){}
     app = [];
+    res = {};
+    questionObj = {
+        question: "Sample Test Question 1"
+    }
     ngOnInit() {
 
         let questionId = this._route.snapshot.params['id'];
 
-        this._appService.getEmployees(questionId)
+        this._appService.getQuestionDetails(questionId)
             .subscribe(resAppData => this.app = resAppData);
     }
 }

@@ -1,0 +1,21 @@
+<div>
+<form #addQuestionForm="ngForm" (ngSubmit)="submitNewQuestion();" >
+  <div fxLayout="row" >
+    <div fxFlex="90">
+    <md-input-container style="width: 100%"> 
+        <input #questionInput 
+              mdInput 
+              placeholder="Add Question" 
+              value="" 
+              name="question" 
+              [(ngModel)]="question.question"
+              required
+              >
+      </md-input-container>
+    </div>
+    <div fxFlex="10">
+      <button [disabled]="addQuestionForm.form.invalid" type="submit" md-fab><md-icon>check</md-icon></button>
+    </div>
+  </div>
+</form>
+</div>
