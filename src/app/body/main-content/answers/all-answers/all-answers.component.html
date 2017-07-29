@@ -1,4 +1,65 @@
-{{app.question}}
+
+<p>
+    <md-card>
+        <md-card-header>
+            <div md-card-avatar>
+                <md-icon>person</md-icon>
+            </div>
+            <md-card-title>Akash Gupta</md-card-title>
+            <md-card-subtitle>KIIT</md-card-subtitle>
+            <md-chip-list>
+                <md-chip>Education</md-chip>
+            </md-chip-list>
+        </md-card-header>
+        <md-card-content>
+            <h2>
+                {{app.question}}
+            </h2>
+            <md-input-container style="width: 100%" 
+                                *ngIf="showTextArea"> 
+                <textarea #answerInput 
+                    mdInput 
+                    placeholder="Your answer"
+                    name="answer" 
+                    required
+                    [(ngModel)]="answer"
+                    mdTextareaAutosize
+                    rows="20" 
+                    cols="120"
+                    >
+                </textarea>
+            </md-input-container>
+        </md-card-content>
+        <md-card-actions align="start">
+            <button md-button 
+                    *ngIf="!showTextArea"
+                    color="primary"  
+                    (click)=onAddAnswer()>
+                    
+                    <md-icon style="font-size: 20px">create</md-icon>
+                    Answer
+            </button>
+            <button md-button 
+                    *ngIf="showTextArea"
+                    color="primary"
+                    (click)=onSubmitAnswer()>
+                    Add Answer
+            </button>
+            <button md-button 
+                    *ngIf="showTextArea"
+                    color="warn"
+                    (click)=onCancel()
+                    >
+                    Cancel
+            </button>
+        </md-card-actions>
+    </md-card>
+</p>
+
 <div *ngFor="let answer of app.answers">
-{{answer.answer}}
+    <p>
+        <md-card>
+            {{answer.answer}}
+        </md-card>
+    </p>
 </div>

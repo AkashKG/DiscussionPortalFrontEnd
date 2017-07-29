@@ -1,11 +1,11 @@
-<div>
+<md-card>
 <form #addQuestionForm="ngForm" (ngSubmit)="submitNewQuestion();" >
   <div fxLayout="row" >
     <div fxFlex="90">
     <md-input-container style="width: 100%"> 
         <input #questionInput 
               mdInput 
-              placeholder="Add Question" 
+              placeholder="Ask your question" 
               value="" 
               name="question" 
               [(ngModel)]="question.question"
@@ -14,8 +14,18 @@
       </md-input-container>
     </div>
     <div fxFlex="10">
-      <button [disabled]="addQuestionForm.form.invalid" type="submit" md-fab><md-icon>check</md-icon></button>
+      <button [disabled]="addQuestionForm.form.invalid" 
+              type="submit" 
+              md-fab>
+              
+              <md-icon>check</md-icon>
+      </button>
     </div>
   </div>
 </form>
-</div>
+<md-card-footer>
+  <md-progress-bar mode="indeterminate" 
+                   *ngIf="addQuestionProgress">
+  </md-progress-bar>
+</md-card-footer>
+</md-card>

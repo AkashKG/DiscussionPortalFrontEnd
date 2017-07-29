@@ -14,4 +14,9 @@ export class AppService {
         return this._http.post("/api/v1/question", questionObj)
                 .map((response:Response) => response.json());
     }
+
+    addAnswer(answer,questionId) {
+        return this._http.post("/api/v1/" + questionId +"/answer", answer)
+        .map((Response:Response) => Response.json());
+    }
 }
