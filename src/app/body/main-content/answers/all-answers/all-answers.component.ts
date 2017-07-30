@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AppService } from '../../../../app.service';
+import { MdSnackBar } from '@angular/material';
 
 @Component({
     selector: 'all-answers',
@@ -10,11 +11,13 @@ import { AppService } from '../../../../app.service';
 })
 export class AllAnswersComponent implements OnInit {
 
-    constructor(private _appService:AppService, private _route:ActivatedRoute){}
+    constructor(private _appService:AppService, private _route:ActivatedRoute, public snackBar: MdSnackBar){}
     app = {questionId:""};
     res = {};
     answer='';
     showTextArea = false;
+    addAnswerProgress = false;
+
     ngOnInit() {
 
         let questionId = this._route.snapshot.params['id'];
@@ -30,13 +33,22 @@ export class AllAnswersComponent implements OnInit {
     onCancel() {
         this.showTextArea = false;
     }
-    status = '';
+
     onSubmitAnswer() {
-        this.showTextArea = false;
+        this.addAnswerProgress = true;
         console.log(this.answer);
         this._appService.addAnswer(this.answer, this.app.questionId)
-        .subscribe(resSubmit => this.status = resSubmit);
+        .subscribe(resSubmit => this.openSnackBar(resSubmit.status, "Done"));
     }
+
+    openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 2000,
+    });
+    this.addAnswerProgress = false;
+    this.showTextArea = false;
+    this.answer = "";
+  }
 
 }
 

@@ -52,6 +52,12 @@
                     >
                     Cancel
             </button>
+            <md-card-footer >
+                <md-progress-bar 
+                    mode="indeterminate"
+                    *ngIf="addAnswerProgress" >
+                </md-progress-bar>
+            </md-card-footer>
         </md-card-actions>
     </md-card>
 </p>
@@ -62,4 +68,5 @@
             {{answer.answer}}
         </md-card>
     </p>
+    
 </div>
