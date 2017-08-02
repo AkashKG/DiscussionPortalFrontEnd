@@ -42,6 +42,7 @@
             <button md-button 
                     *ngIf="showTextArea"
                     color="primary"
+                    [disabled] = "!answer.length"
                     (click)=onSubmitAnswer()>
                     Add Answer
             </button>
@@ -62,11 +63,30 @@
     </md-card>
 </p>
 
-<div *ngFor="let answer of app.answers">
-    <p>
-        <md-card>
-            {{answer.answer}}
-        </md-card>
-    </p>
-    
+<div *ngFor="let answer of app.answerResponse">
+    <md-card>
+        <md-card-header>
+        <div md-card-avatar>
+            <md-icon>person</md-icon>
+        </div>
+        <md-card-title>{{answer.answerBy}}</md-card-title>
+        <md-card-subtitle>KIIT</md-card-subtitle>
+            <md-chip-list>
+                <md-chip>Education</md-chip>
+            </md-chip-list>
+            <span fxFlex></span>
+            <button md-icon-button (click)=onSelect(answer.answerId)>
+            <md-icon>launch</md-icon>
+            </button>
+        </md-card-header>
+        <md-card-content>
+            <p style="white-space: pre-wrap;">
+        {{answer.answer}}
+            </p>
+        </md-card-content>
+        <md-card-actions align="center">
+            <button md-button color="primary">Agree</button>
+            <button md-button color="warn">Disagree</button>
+        </md-card-actions>
+    </md-card>
 </div>

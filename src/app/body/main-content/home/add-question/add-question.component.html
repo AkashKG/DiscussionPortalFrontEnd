@@ -3,14 +3,17 @@
   <div fxLayout="row" >
     <div fxFlex="90">
     <md-input-container style="width: 100%"> 
-        <input #questionInput 
+        <textarea #questionInput 
               mdInput 
               placeholder="Ask your question" 
               value="" 
               name="question" 
               [(ngModel)]="question.question"
+              mdTextareaAutosize
               required
               >
+        </textarea>
+
       </md-input-container>
     </div>
     <div fxFlex="10">
@@ -22,6 +25,7 @@
       </button>
     </div>
   </div>
+  
 </form>
 <md-card-footer>
   <md-progress-bar mode="indeterminate" 

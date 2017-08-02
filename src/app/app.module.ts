@@ -9,10 +9,11 @@ import { AppRouterModule, RoutingInternalComponents } from './routing/app-router
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HomeComponent } from './body/main-content/home/home.component';
 import { AddQuestionComponent } from './body/main-content/home/add-question/add-question.component';
+import { AnswerComponent } from './body/main-content/answers/answer/answer.component';
 
 @NgModule({
   declarations: [
-    AppComponent, AppInternalComponents, RoutingInternalComponents, HomeComponent, AddQuestionComponent
+    AppComponent, AppInternalComponents, RoutingInternalComponents, HomeComponent, AddQuestionComponent, AnswerComponent
   ],
   imports: [
     BrowserModule, FormsModule, HttpModule, MaterialModule, AppRouterModule, BrowserAnimationsModule, FlexLayoutModule

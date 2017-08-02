@@ -19,4 +19,9 @@ export class AppService {
         return this._http.post("/api/v1/" + questionId +"/answer", answer)
         .map((Response:Response) => Response.json());
     }
+
+    getAnswerDatails(answerId) {
+        return this._http.get("/api/v1/answer/"+ answerId)
+                .map((response:Response) => response.json());
+    }
 }

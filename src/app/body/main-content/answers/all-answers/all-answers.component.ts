@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AppService } from '../../../../app.service';
 import { MdSnackBar } from '@angular/material';
+
 
 @Component({
     selector: 'all-answers',
@@ -11,7 +12,8 @@ import { MdSnackBar } from '@angular/material';
 })
 export class AllAnswersComponent implements OnInit {
 
-    constructor(private _appService:AppService, private _route:ActivatedRoute, public snackBar: MdSnackBar){}
+    constructor(private _appService:AppService, private _route:ActivatedRoute, public snackBar: MdSnackBar, 
+                private router:Router){}
     app = {questionId:""};
     res = {};
     answer='';
@@ -19,11 +21,17 @@ export class AllAnswersComponent implements OnInit {
     addAnswerProgress = false;
 
     ngOnInit() {
+        this.getAnswers()
+    }
 
+    getAnswers() {
         let questionId = this._route.snapshot.params['id'];
-
         this._appService.getQuestionDetails(questionId)
-            .subscribe(resAppData => this.app = resAppData);
+                        .subscribe(resAppData => this.app = resAppData);
+    }
+
+    onSelect(id) {
+        this.router.navigate(['/answer', id]);
     }
 
     onAddAnswer() {
@@ -48,6 +56,7 @@ export class AllAnswersComponent implements OnInit {
     this.addAnswerProgress = false;
     this.showTextArea = false;
     this.answer = "";
+    this.getAnswers();
   }
 
 }

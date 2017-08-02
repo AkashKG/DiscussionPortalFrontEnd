@@ -18,6 +18,7 @@ export class AddQuestionComponent implements OnInit {
   /**
    * Add new question.
    */
+ 
   submitNewQuestion() {
     this.addQuestionProgress = true;
     this._appService.addQuestion(this.question)
@@ -34,6 +35,7 @@ export class AddQuestionComponent implements OnInit {
 
     this.question = {};
   }
+
 
   question = {};
   addQuestionProgress = false;
