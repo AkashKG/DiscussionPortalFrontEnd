@@ -5,15 +5,15 @@
      fxLayoutAlign="space-between start"
      fxLayoutAlign.xs="center start">
 
-    <div fxFlex="20%">
+    <div fxFlex="20">
         <app-left-panel></app-left-panel>
     </div>
 
-    <div fxLayoutAlign="center center">
+    <div fxFlex fxLayoutAlign="center center">
         <router-outlet></router-outlet>
     </div>
 
-    <div fxFlex="20%"
+    <div fxFlex="30"
          fxLayoutAlign="end end">
         <app-right-panel></app-right-panel>
     </div>

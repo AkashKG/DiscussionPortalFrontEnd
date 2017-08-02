@@ -5,8 +5,23 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class AppService {
     constructor(private _http:Http) {}
-    getEmployees(questionId) {
-        return this._http.get("/Project/answers/" + questionId)
+    getQuestionDetails(questionId) {
+        return this._http.get("/api/v1/answers/" + questionId)
+                .map((response:Response) => response.json());
+    }
+
+     addQuestion(questionObj) {
+        return this._http.post("/api/v1/question", questionObj)
+                .map((response:Response) => response.json());
+    }
+
+    addAnswer(answer,questionId) {
+        return this._http.post("/api/v1/" + questionId +"/answer", answer)
+        .map((Response:Response) => Response.json());
+    }
+
+    getAnswerDatails(answerId) {
+        return this._http.get("/api/v1/answer/"+ answerId)
                 .map((response:Response) => response.json());
     }
 }

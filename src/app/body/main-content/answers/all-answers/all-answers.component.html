@@ -1,4 +1,92 @@
-{{app.question}}
-<div *ngFor="let answer of app.answers">
-{{answer.answer}}
+
+<p>
+    <md-card>
+        <md-card-header>
+            <div md-card-avatar>
+                <md-icon>person</md-icon>
+            </div>
+            <md-card-title>Akash Gupta</md-card-title>
+            <md-card-subtitle>KIIT</md-card-subtitle>
+            <md-chip-list>
+                <md-chip>Education</md-chip>
+            </md-chip-list>
+        </md-card-header>
+        <md-card-content>
+            <h2>
+                {{app.question}}
+            </h2>
+            <md-input-container style="width: 100%" 
+                                *ngIf="showTextArea"> 
+                <textarea #answerInput 
+                    mdInput 
+                    placeholder="Your answer"
+                    name="answer" 
+                    required
+                    [(ngModel)]="answer"
+                    mdTextareaAutosize
+                    rows="20" 
+                    cols="120"
+                    >
+                </textarea>
+            </md-input-container>
+        </md-card-content>
+        <md-card-actions align="start">
+            <button md-button 
+                    *ngIf="!showTextArea"
+                    color="primary"  
+                    (click)=onAddAnswer()>
+                    
+                    <md-icon style="font-size: 20px">create</md-icon>
+                    Answer
+            </button>
+            <button md-button 
+                    *ngIf="showTextArea"
+                    color="primary"
+                    [disabled] = "!answer.length"
+                    (click)=onSubmitAnswer()>
+                    Add Answer
+            </button>
+            <button md-button 
+                    *ngIf="showTextArea"
+                    color="warn"
+                    (click)=onCancel()
+                    >
+                    Cancel
+            </button>
+            <md-card-footer >
+                <md-progress-bar 
+                    mode="indeterminate"
+                    *ngIf="addAnswerProgress" >
+                </md-progress-bar>
+            </md-card-footer>
+        </md-card-actions>
+    </md-card>
+</p>
+
+<div *ngFor="let answer of app.answerResponse">
+    <md-card>
+        <md-card-header>
+        <div md-card-avatar>
+            <md-icon>person</md-icon>
+        </div>
+        <md-card-title>{{answer.answerBy}}</md-card-title>
+        <md-card-subtitle>KIIT</md-card-subtitle>
+            <md-chip-list>
+                <md-chip>Education</md-chip>
+            </md-chip-list>
+            <span fxFlex></span>
+            <button md-icon-button (click)=onSelect(answer.answerId)>
+            <md-icon>launch</md-icon>
+            </button>
+        </md-card-header>
+        <md-card-content>
+            <p style="white-space: pre-wrap;">
+        {{answer.answer}}
+            </p>
+        </md-card-content>
+        <md-card-actions align="center">
+            <button md-button color="primary">Agree</button>
+            <button md-button color="warn">Disagree</button>
+        </md-card-actions>
+    </md-card>
 </div>
